@@ -4,7 +4,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>SEAMEO BIOTROP - Southeast Asian Regional Centre for Tropical Biology - Biotrop Training Online</title>
+	<link rel="icon" type="image/png" href="http://www.recsam.edu.my/joomla/images/logo-biotrop.png">
 
 	<link href="/css/app.css" rel="stylesheet">
 

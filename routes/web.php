@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('blank');
+	return View::make('home');
 });
 
 Route::get('/charts', function()
