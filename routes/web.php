@@ -76,3 +76,33 @@ Route::get('/documentation', function()
 {
 	return View::make('documentation');
 });
+
+
+
+
+//ini link baru
+
+Route::get('/newtraining', function()
+{
+	return View::make('newtraining');
+});
+
+Route::get('/listtraining', function()
+{
+	return View::make('listtraining');
+});
+
+Route::get('/listpemohon', function()
+{
+	return View::make('listpemohon');
+});
+
+Route::get('/evaluasi', function()
+{
+	return View::make('evaluasi');
+});
+
+Route::get('/listuser', function()
+{
+	return View::make('listuser');
+});
