@@ -19,14 +19,15 @@
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Datatables -->
 	<link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet">
-
+	<!--Datepicker-->
+	<link href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
 </head>
 <body>
 	@yield('body')
 	<script src="{{ asset("assets/scripts/frontend.js") }}" type="text/javascript"></script>
 
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -41,6 +42,14 @@
         });
   	</script>
 
-
+		<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+		<script>
+				$(function()
+				{
+							$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy',
+										changeMonth: true,
+	      						changeYear: true});
+				});
+		</script>
 </body>
 </html>

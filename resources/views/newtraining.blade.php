@@ -4,7 +4,7 @@
 <div class="col-sm-12">
 <div class="row">
     <div class="col-lg-6">
-        <form role="form">
+        <form role="form" action="action">
 
             <div class="form-group">
                 <label>Nama Training </label>
@@ -26,6 +26,12 @@
                 <label>Banyak Pertemuan</label>
                 <input class="form-control" placeholder="Enter text">
             </div>
+
+            <div class="form-group">
+                <label for="tanggal">Tanggal</label>
+                <input type="text" name="tanggal" class="tanggal" />
+            </div>
+
 
 
             <button type="submit" class="btn btn-success">Submit Button</button>
