@@ -5,7 +5,7 @@
 <div class="row">
   <div class="container">
       <div class="col-lg-12">
-          <table id="listtraining" class="table table-striped">
+          <table id="listpemohon" class="table table-striped">
               <thead>
                   <tr>
                       <th>Nama</th>

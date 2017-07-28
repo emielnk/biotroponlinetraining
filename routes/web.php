@@ -18,53 +18,52 @@ Route::get('/', function()
 
 Route::get('/charts', function()
 {
-	return View::make('mcharts');
+	return View::make('templates.mcharts');
 });
 
 Route::get('/tables', function()
 {
-	return View::make('table');
+	return View::make('templates.table');
 });
 
 Route::get('/forms', function()
 {
-	return View::make('form');
+	return View::make('templates.form');
 });
 
 Route::get('/grid', function()
 {
-	return View::make('grid');
+	return View::make('templates.grid');
 });
 
 Route::get('/buttons', function()
 {
-	return View::make('buttons');
+	return View::make('templates.buttons');
 });
-
 
 Route::get('/icons', function()
 {
-	return View::make('icons');
+	return View::make('templates.icons');
 });
 
 Route::get('/panels', function()
 {
-	return View::make('panel');
+	return View::make('templates.panel');
 });
 
 Route::get('/typography', function()
 {
-	return View::make('typography');
+	return View::make('templates.typography');
 });
 
 Route::get('/notifications', function()
 {
-	return View::make('notifications');
+	return View::make('templates.notifications');
 });
 
 Route::get('/blank', function()
 {
-	return View::make('blank');
+	return View::make('templates.blank');
 });
 
 Route::get('/login', function()
@@ -74,7 +73,7 @@ Route::get('/login', function()
 
 Route::get('/documentation', function()
 {
-	return View::make('documentation');
+	return View::make('templates.documentation');
 });
 
 
