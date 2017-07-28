@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-6">
         <form role="form" action="action">
-
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
                 <label>Nama Training </label>
                 <input class="form-control" placeholder="Enter text">
@@ -27,10 +27,11 @@
                 <input class="form-control" placeholder="Enter text">
             </div>
 
-            <div class="form-group">
-                <label for="tanggal">Tanggal</label>
-                <input type="text" name="tanggal" class="tanggal" />
-            </div>
+
+
+
+
+
 
 
 

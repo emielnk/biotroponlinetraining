@@ -105,3 +105,8 @@ Route::get('/listuser', function()
 {
 	return View::make('listuser');
 });
+
+Route::get('/userprofile', function()
+{
+	return View::make('userprofile');
+});

@@ -26,12 +26,11 @@
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<!-- Datatable -->
 	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
+	<!--dataTables-->
 	<script>
 			$(function()
 			{
@@ -40,17 +39,33 @@
 					var table = $("#listuser").DataTable();
 			});
 	</script>
+	<!--/dataTables-->
 
+	<!--datepicker-->
 	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 	<script>
 			$(function()
 			{
-						$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy',
-									changeMonth: true,
-									changeYear: true});
+						$( "#datepicker" ).datepicker(
+							{
+								dateFormat	: 'dd-mm-yy',
+								changeMonth	: true,
+								changeYear	: true
+							}
+						);
 			});
 	</script>
+	<!--/datepicker-->
 
+	<!--tiny mce editor-->
+	<script type="text/javascript" src="{{ asset('/js/tinymce/tinymce.min.js') }}"></script>
+	<script type="text/javascript">
+	  tinymce.init({
+	    selector : "textarea",
+	    plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen", "insertdatetime media table contextmenu paste"],
+	    toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+	  });
+	</script>
 
 </body>
 </html>

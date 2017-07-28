@@ -18,6 +18,12 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+
+	<!-- Datatables -->
+	<link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet">
+	<!--Datepicker-->
+	<link href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -59,5 +65,34 @@
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Datatable -->
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
+	<script>
+			$(function()
+			{
+					var table = $("#listtraining").DataTable();
+					var table = $("#listpemohon").DataTable();
+					var table = $("#listuser").DataTable();
+			});
+	</script>
+
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script>
+			$(function()
+			{
+						$( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy',
+									changeMonth: true,
+									changeYear: true});
+			});
+	</script>
+
+
 </body>
 </html>
