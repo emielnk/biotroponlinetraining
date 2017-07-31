@@ -48,7 +48,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'nama' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -63,9 +63,41 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'nama' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        // send email to registered user
+        \Mail::send('email.user.register', compact('user'), function ($message) use ($user) {
+            $mail->to($user->email, $user->name)
+                ->from('mail@laravel.web.id', 'Laravel.web.id')
+                ->subject('Pedaftaran Berhasil');
+        });
+
+        // log
+        \Log::debug('New user has been registered.', ['email' => $user->email]);
+
+        $this->guard()->login($user);
+
+        return redirect($this->redirectPath());
+    }
+}
+
+
+
+
+
+
+
+
+
+
 }

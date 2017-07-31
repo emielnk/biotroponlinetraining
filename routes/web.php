@@ -66,10 +66,10 @@ Route::get('/blank', function()
 	return View::make('templates.blank');
 });
 
-Route::get('/login', function()
-{
-	return View::make('login');
-});
+// Route::get('/login', function()
+// {
+// 	return View::make('login');
+// });
 
 Route::get('/documentation', function()
 {
@@ -86,10 +86,10 @@ Route::get('/newtraining', function()
 	return View::make('newtraining');
 });
 
-Route::get('/listtraining', function()
-{
-	return View::make('listtraining');
-});
+// Route::get('/listtraining', function()
+// {
+// 	return View::make('listtraining');
+// });
 
 Route::get('/listpemohon', function()
 {
@@ -109,4 +109,18 @@ Route::get('/listuser', function()
 Route::get('/userprofile', function()
 {
 	return View::make('userprofile');
+});
+
+
+//buat login
+Route::get('/login',  function(){
+	return view('login');
+});
+
+Route::post('login','UserController@checkLogin');
+Route::get('logout','UserController@logout');
+
+Route::group(['Middleware' => 'Auth'], function () {
+	Route::get('dashboard','HomeController@index');
+	Route::get('listtraining','HomeController@listtraining');
 });

@@ -1,32 +1,39 @@
 @extends ('layouts.plane')
 @section ('body')
-<div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-            <br /><br /><br />
-               @section ('login_panel_title','Please Sign In')
-               @section ('login_panel_body')
-                        <form role="form">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <a href="{{ url ('') }}" class="btn btn-lg btn-success btn-block">Login</a>
-                            </fieldset>
-                        </form>
-                    
-                @endsection
-                @include('widgets.panel', array('as'=>'login', 'header'=>true))
-            </div>
-        </div>
-    </div>
+<div class="col-md-6 col-md-offset-3">
+
+	<h1 class="page-header">Login The Hobi</h1>
+
+	<form method="post" action="{{action('UserController@checkLogin')}}">
+
+		{{ csrf_field() }}
+
+
+		@if (
+
+			(count($errors) > 0 ) || (session('status') == 'salah')
+
+		)
+
+		<p class="text-danger">
+			Maaf Username atau Password anda salah!
+		</p>
+
+		@endif
+
+		<label>email</label>
+		<div class="form-group">
+			<input type="text" name="email" class="form-control">
+		</div>
+
+		<label>Password</label>
+		<div class="form-group">
+			<input type="password" name="password" class="form-control">
+		</div>
+
+		<button type="submit" class="btn btn-block btn-primary">Login</button>
+
+	</form>
+</div>
+
 @stop
