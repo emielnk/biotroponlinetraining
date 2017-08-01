@@ -122,5 +122,9 @@ Route::get('logout','UserController@logout');
 
 Route::group(['Middleware' => 'Auth'], function () {
 	Route::get('dashboard','HomeController@index');
-	Route::get('listtraining','HomeController@listtraining');
+	Route::get('listtraining','TrainingController@listtraining');
+	Route::get('listtraining/destroy/{id_training}', 'TrainingController@destroy');
+
+
+
 });

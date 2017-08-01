@@ -18,10 +18,10 @@ class HomeController extends Controller {
 	 *
 	 * @return void
 	 */
-	// public function __construct()
-	// {
-	// 	$this->middleware('auth');
-	// }
+	public function __construct()
+	{
+		$this->middleware('guest', ['except' => 'getLogout']);
+	}
 
 	/**
 	 * Show the application dashboard to the user.
@@ -31,11 +31,6 @@ class HomeController extends Controller {
 	public function index()
 	{
 		return view('home');
-	}
-
-	public function listtraining()
-	{
-		return view('listtraining');
 	}
 
 }
