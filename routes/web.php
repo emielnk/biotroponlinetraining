@@ -81,10 +81,10 @@ Route::get('/documentation', function()
 
 //ini link baru
 
-Route::get('/newtraining', function()
-{
-	return View::make('newtraining');
-});
+// Route::get('/newtraining', function()
+// {
+// 	return View::make('newtraining');
+// });
 
 // Route::get('/listtraining', function()
 // {
@@ -123,8 +123,30 @@ Route::get('logout','UserController@logout');
 Route::group(['Middleware' => 'Auth'], function () {
 	Route::get('dashboard','HomeController@index');
 	Route::get('listtraining','TrainingController@listtraining');
+
+	// new training
+	Route::get('newtraining','TrainingController@newtraining');
+	Route::post('newtraining/save', [
+		'uses'=>'TrainingController@savetraining',
+		'as' => 'savetraining'
+	]);
+	// showtraining
+	Route::get('listtraining/show/{id_training}', 'TrainingController@showtraining');
+
+	// edit training
+	Route::get('listtraining/{id_training}/edit', 'TrainingController@edittraining');
+	Route::post('listtraining/{id_training}/updatetraining', [
+		'uses'=>'TrainingController@updatetraining',
+		'as' => 'updatetraining'
+	]);
+	// hapus training
 	Route::get('listtraining/destroy/{id_training}', 'TrainingController@destroy');
 
+	// detail training => isi pertemuan
+	Route::get('listtraining/show/{id_training}/detailtraining', [
+		'uses' => 'TrainingController@showpertemuan',
+		'as' => 'detailtraining'
+]);
 
 
 });

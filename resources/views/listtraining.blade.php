@@ -20,12 +20,12 @@
                 <tbody>
                   @foreach ($list as $listtrain)
                   <tr>
-                        <td> {{ $listtrain->nama_training }} </td>
+                        <td><a href="listtraining/show/{{ $listtrain->id_training }}"> {{ $listtrain->nama_training }} </a> </td>
                         <td> {{ $listtrain->tanggal_mulai }} </td>
                         <td> {{ $listtrain->tanggal_akhir }} </td>
-                        <td> {{ substr($listtrain->deskripsi_training,0,50) }}....  </td>
+                        <td> {!! substr($listtrain->deskripsi_training,0,50) !!}....  </td>
                         <td> {{ $listtrain->banyak_pertemuan }} </td>
-                        <td><a href="#"><button class="btn btn-success">Edit</button></a></td>
+                        <td><a href="listtraining/{{ $listtrain->id_training }}/edit"><button class="btn btn-success">Edit</button></a></td>
 					              <td><a href="listtraining/destroy/{{ $listtrain->id_training }}"><button type="submit" class="btn btn-danger">Delete</button></a> </td>
                     </tr>
                   @endforeach
