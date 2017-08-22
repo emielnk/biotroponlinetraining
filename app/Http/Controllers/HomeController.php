@@ -1,5 +1,8 @@
-<?php namespace App\Http\Controllers;
+<?php
 
+namespace App\Http\Controllers;
+
+use App\Models\training;
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +33,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$training = Training::all()->count();
+		return view('home',['jumlah'=>$training]);
 	}
 
 }

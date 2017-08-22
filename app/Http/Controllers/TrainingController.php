@@ -13,12 +13,12 @@ class TrainingController extends Controller
     public function listtraining()
     {
         $list = Training::all();
-        return view('listtraining', ['list'=>$list]);
+        return view('admin.training.listtraining', ['list'=>$list]);
     }
 
     public function newtraining()
     {
-      return view('newtraining');
+      return view('admin.training.newtraining');
     }
 
     public function savetraining(Request $request)
@@ -40,7 +40,7 @@ class TrainingController extends Controller
     {
         $caritraining = Training::find($id_training);
         // dd($caritraining);
-        return view('edittraining', ['cari' => $caritraining]);
+        return view('admin.training.edittraining', ['cari' => $caritraining]);
     }
 
     public function updatetraining(Request $request, $id_training)
@@ -62,7 +62,7 @@ class TrainingController extends Controller
 
     public function destroy($id_training)
     {
-        Training::destroy($id);
+        Training::destroy($id_training);
         return redirect('listtraining');
     }
 
@@ -70,22 +70,8 @@ class TrainingController extends Controller
     {
       $caritraining = Training::find($id_training);
       //dd($caritraining);
-      return view('showtraining', ['cari' => $caritraining]);
+      return view('admin.training.showtraining', ['cari' => $caritraining]);
     }
-
-    public function showpertemuan($id_training)
-    {
-          $carijudul = Training::find($id_training);
-          $caripertemuan = Pertemuan::where('id_training',$id_training)->get();
-          // dd($caripertemuan);
-          return view('detailtraining', ['cari' => $caripertemuan, 'judul' => $carijudul ]);
-    }
-
-
-
-
-
-
 
 
     public function data(Request $request)

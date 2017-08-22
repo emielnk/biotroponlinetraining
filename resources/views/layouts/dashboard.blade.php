@@ -12,7 +12,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url ('') }}">Biotrop Online Training</a>
+                <a class="navbar-brand" href="{{ url ('dashboard') }}">Biotrop Online Training</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -43,7 +43,7 @@
                     <ul class="nav" id="side-menu">
 
                         <li {{ (Request::is('/') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('') }}"><i class="fa fa-home fa-fw"></i> Home </a>
+                            <a href="{{ url ('dashboard') }}"><i class="fa fa-home fa-fw"></i> Home </a>
                         </li>
 
                         <li >
@@ -60,11 +60,6 @@
                                 </li>
                             </ul>
                         </li>
-
-                        <li {{ (Request::is('*evaluasi') ? 'class="active"' : '') }}>
-                            <a href="{{ url ('evaluasi') }}"><i class="fa fa-thumbs-o-up fa-fw"></i> Evaluasi </a>
-                        </li>
-
 
                         <li {{ (Request::is('*listuser') ? 'class="active"' : '') }}>
                             <a href="{{ url ('listuser') }}"><i class="fa fa-user fa-fw"></i> User </a>

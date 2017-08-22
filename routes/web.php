@@ -81,19 +81,11 @@ Route::get('/documentation', function()
 
 //ini link baru
 
-// Route::get('/newtraining', function()
-// {
-// 	return View::make('newtraining');
-// });
 
-// Route::get('/listtraining', function()
-// {
-// 	return View::make('listtraining');
-// });
 
 Route::get('/listpemohon', function()
 {
-	return View::make('listpemohon');
+	return View::make('admin.listpemohon');
 });
 
 Route::get('/evaluasi', function()
@@ -114,7 +106,7 @@ Route::get('/userprofile', function()
 
 //buat login
 Route::get('/login',  function(){
-	return view('login');
+	return view('admin.login');
 });
 
 Route::post('login','UserController@checkLogin');
@@ -132,7 +124,6 @@ Route::group(['Middleware' => 'Auth'], function () {
 	]);
 	// showtraining
 	Route::get('listtraining/show/{id_training}', 'TrainingController@showtraining');
-
 	// edit training
 	Route::get('listtraining/{id_training}/edit', 'TrainingController@edittraining');
 	Route::post('listtraining/{id_training}/updatetraining', [
@@ -142,11 +133,69 @@ Route::group(['Middleware' => 'Auth'], function () {
 	// hapus training
 	Route::get('listtraining/destroy/{id_training}', 'TrainingController@destroy');
 
+
 	// detail training => isi pertemuan
 	Route::get('listtraining/show/{id_training}/detailtraining', [
-		'uses' => 'TrainingController@showpertemuan',
+		'uses' => 'PertemuanController@showpertemuan',
 		'as' => 'detailtraining'
-]);
+	]);
+	// new pertemuan
+	Route::get('listtraining/show/{id_training}/detailtraining/newpertemuan','PertemuanController@newpertemuan');
+	Route::post('newpertemuan/save', [
+		'uses'=>'PertemuanController@savepertemuan',
+		'as' => 'savepertemuan'
+	]);
+	// edit pertemuan
+	Route::get('listtraining/show/{id_training}/detailtraining/edit/{id_pertemuan}', [
+		'uses'=>'PertemuanController@editpertemuan',
+		'as' => 'editpertemuan'
+	]);
+	Route::post('listtraining/{id_training}/updatepertemuan/{id_pertemuan}', [
+		'uses'=>'PertemuanController@updatepertemuan',
+		'as' => 'updatepertemuan'
+	]);
+	// hapus pertemuan
+	Route::get('listtraining/{id_training}/destroy/{id_pertemuan}', [
+		'uses'=>'PertemuanController@destroytemu',
+		'as' => 'destroytemu'
+	]);
+
+
+	// newtest
+	Route::get('listtraining/show/{id_training}/detailtraining/newtest', 'TestController@shownewtest');
+	// save test
+	Route::post('listtraining/show/{id_training}/detailtraining/newtest/save', 'TestController@savequestiontest');
+	Route::get('listtraining/show/{id_training}/detailtraining/showtest', 'TestController@showdone');
+	// show test
+	Route::get('listtraining/show/{id_training}/detailtraining/{id_test}/showtest', [
+		'uses'=>'TestController@showtest',
+		'as'	=>'showtest'
+	]);
+	// newtest question
+	Route::get('listtraining/show/{id_training}/detailtraining/{id_test}/showtest/newquestion', 'TestController@addnewquestion');
+	// save question
+	Route::post('listtraining/show/{id_training}/detailtraining/{id_test}/showtest/newtest/save', 'TestController@savequestiontest');
+
+
+
+
+
+
+
+
+
+	// // test = pre = post
+	// Route::get('listtraining/show/{id_training}/detailtraining/newtest', 'TestController@shownewtest');
+	// Route::get('listtraining/show/{id_training}/detailtraining/test/show', 'TestController@showtest');
+	//
+	// // buat pertanyaan test
+	// Route::get('listtraining/show/{id_training}/detailtraining/test/new', 'TestController@newquestiontest');
+	// Route::post('listtraining/show/{id_training}/detailtraining/test/save', 'TestController@savequestiontest');
+	//
+	// // evaluasi
+	// Route::get('listtraining/show/{id_training}/detailtraining/evaluasi', 'TestController@showeval');
+	// Route::get('listtraining/show/{id_training}/detailtraining/evaluasi/new', 'TestController@neweval');
+	// Route::post('listtraining/show/{id_training}/detailtraining/evaluasi/save', 'TestController@saveeval');
 
 
 });
