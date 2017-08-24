@@ -46,6 +46,10 @@
                             <a href="{{ url ('dashboard') }}"><i class="fa fa-home fa-fw"></i> Home </a>
                         </li>
 
+                        <li {{ (Request::is('*pengumuman') ? 'class="active"' : '') }}>
+                            <a href="{{ url ('pengumuman') }}"><i class="fa fa-th-large fa-fw"></i> Pengumuman </a>
+                        </li>
+
                         <li >
                             <a href="#"><i class="fa fa-book fa-fw"></i> Training <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

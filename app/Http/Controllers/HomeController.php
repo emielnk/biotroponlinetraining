@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\training;
+use App\Models\pengumuman;
 class HomeController extends Controller {
 
 	/*
@@ -34,7 +38,58 @@ class HomeController extends Controller {
 	public function index()
 	{
 		$training = Training::all()->count();
-		return view('home',['jumlah'=>$training]);
+
+		$peng = pengumuman::all();
+		$terbaru = $peng->last();
+		return view('home',['jumlah'=>$training, 'pengumuman'=>$terbaru]);
+	}
+
+	public function pengumuman()
+	{
+		$peng = pengumuman::all();
+		$terbaru = $peng->last();
+
+		// dd($tanggal);
+		return view('admin.pengumuman.pengumuman',['pengumuman'=>$terbaru]);
+	}
+
+	public function newpengumuman()
+	{
+		return view('admin.pengumuman.newpengumuman');
+	}
+
+	public function savepengumuman(request $request)
+	{
+		$tanggal= date('d-m-Y');
+		$pengumumanbaru = new pengumuman;
+		$pengumumanbaru -> isi_pengumuman  		= $request-> input('isi_pengumuman');
+		$pengumumanbaru -> tanggal_publikasi  = $tanggal ;
+		$pengumumanbaru -> save();
+
+		return redirect('pengumuman');
+	}
+
+	public function editpengumuman()
+	{
+		$peng = pengumuman::all();
+		$terbaru = $peng->last();
+		return view('admin.pengumuman.editpengumuman',['pengumuman'=>$terbaru]);
+	}
+
+	public function updatepengumuman(request $request)
+	{
+		$tanggal= date('d-m-Y');
+		// dd($request);
+		$peng = pengumuman::all();
+		$terbaru = $peng->last();
+
+		$terbaru -> isi_pengumuman  	 = $request-> input('isi_pengumuman');
+		$terbaru -> tanggal_publikasi  = $tanggal ;
+		$terbaru -> save();
+
+		return redirect('pengumuman');
+
+
 	}
 
 }

@@ -104,6 +104,7 @@ Route::get('/userprofile', function()
 });
 
 
+
 //buat login
 Route::get('/login',  function(){
 	return view('admin.login');
@@ -114,6 +115,25 @@ Route::get('logout','UserController@logout');
 
 Route::group(['Middleware' => 'Auth'], function () {
 	Route::get('dashboard','HomeController@index');
+
+
+	// pengumuman
+	Route::get('pengumuman','HomeController@pengumuman');
+	// new pengumuman
+	Route::get('newpengumuman','HomeController@newpengumuman');
+	Route::post('newpengumuman/save', [
+		'uses'=>'HomeController@savepengumuman',
+		'as' => 'savepengumuman'
+	]);
+	// edit pengumuman
+	Route::get('pengumuman/edit', 'HomeController@editpengumuman');
+	Route::post('pengumuman/updatepengumuman', [
+		'uses'=>'HomeController@updatepengumuman',
+		'as' => 'updatepengumuman'
+	]);
+
+
+
 	Route::get('listtraining','TrainingController@listtraining');
 
 	// new training
